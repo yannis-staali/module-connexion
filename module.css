@@ -1,0 +1,138 @@
+.bodyinscription{
+    display:flex;
+    flex-direction: column;
+    margin: 0px;
+    background-image:url(images/wallpaper7.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* HEADER ------------------------------- */
+.header_ins {
+    height: 5vh;
+    width: auto;
+    background-color: rgb(3, 3, 3, 0.7);
+    border-bottom: 1px solid white;
+}
+.header_ins h1{
+    margin-top:0px ;
+    margin-bottom: 0px;
+    margin-left: 20px;
+    padding-top: 5px;
+    color: white;
+    font-family: monospace;
+}
+/* MAIN ------------------------------------------- */
+.main_ins{
+    display: flex;
+    /* height: auto; */
+    height: 92vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+/*  FORMULAIRE -------------------------------------------------- */
+.boite_ins {
+    width: 600px;
+    background-color: rgb(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid white;
+    border-radius: 30px; 
+}
+.head_index{
+    color: white;
+    font-family: monospace;
+}
+.head_profile{
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 3px;
+}
+.head_admin{
+    color: white;
+    font-family: monospace;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+.form_ins {
+    background-color: rgb(0, 0, 0, 0.01);
+    color: white;
+    width: 500px;
+    margin: auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.form_ins article  {
+    margin-top: 10px;
+}
+.form_ins input {
+    font-family: 'Courier New', Courier, monospace;
+    font:1em;
+    box-sizing: border-box;
+    border: 1px solid #999;
+}
+.pseudo_ins {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pseudo_ins label {
+    text-align: center;
+    padding-bottom: 3px;
+}
+.mp_ins {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mp_ins label {
+    text-align: center;
+    padding-bottom: 3px;
+}
+.firstName_ins {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.firstName_ins label {
+    text-align: center;
+    padding-bottom: 3px;
+}
+.lastName_ins {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.lastName_ins label {
+    text-align: center;
+    padding-bottom: 3px;
+}
+.button_ins {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.button_ins label {
+    text-align: center;
+    padding-bottom: 3px;
+}
+/* FOOTER ---------------------------------------- */
+.footer_ins {
+    height: 3vh;
+    width: auto;
+    background-color: rgb(0, 0, 0, 0.9);
+}
+.footer_ins p {
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    border-top: 2px solid white;
+    font-family: monospace;
+}
