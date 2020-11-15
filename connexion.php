@@ -1,3 +1,35 @@
+<?php 
+
+session_start() ;
+ 
+
+ $bd = mysqli_connect("localhost","root","","moduleconnexion");
+
+ $requete = "SELECT * FROM `utilisateurs`";
+ $query = mysqli_query($bd,$requete);
+ $resultat = mysqli_fetch_all($query);
+
+    foreach ($resultat as $key => $value)
+    {
+        if (!empty($_POST))
+        {
+            if ( $_POST['login'] === $value[1] &&  $_POST['password'] === $value[4])
+            {
+                    $_SESSION['connect'] = "connecté";
+                    $_SESSION['login'] = $_POST['login'];
+                    if( $_POST['login'] === "admin")
+                    {
+                        header('location: admin.php');
+                    }
+                    else header('location: profil.php');
+            }
+        }
+    }
+    
+ 
+mysqli_close($bd);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,7 +57,7 @@
                         <input type="password" id="motdepasse" name="password" required>
                     </article>
                     <article class="button_ins">
-                        <button type="submit">Valider</button>
+                        <button type="submit" name="submit" >Valider</button>
                     </article>
                 </form>
                     <article class="linkcreate">

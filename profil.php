@@ -1,3 +1,10 @@
+<?php 
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -33,7 +40,7 @@
                         <input pattern=".{8,}" type="password" id="enterMp" name="password" required>
                     </article>    
                     <article class="button_ins">
-                        <button type="submit" formaction="connexion.html">Valider</button>
+                        <button type="submit" name="submit">Valider</button>
                     </article>
                 </form>
             </section>

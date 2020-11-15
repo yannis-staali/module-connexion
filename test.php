@@ -13,7 +13,8 @@
 
 // }
 
-
+$legumes = array('carotte','poivron','aubergine','chou'); 
+var_dump($legumes);
 
 ?>
 
