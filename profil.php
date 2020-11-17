@@ -6,6 +6,7 @@ if(!isset($_SESSION['connexion']))
     header('location: connexion.php');
     exit();
 }
+$loginverify = $_SESSION['connexion'];
 
 if(isset($_POST['submit']))
 {
@@ -20,7 +21,7 @@ if(isset($_POST['submit']))
         if($password==$password2)
         {
             $connexion = mysqli_connect("localhost","root","","moduleconnexion") or die('erreur');
-            $requete = ("UPDATE `utilisateurs` SET login = '$login', prenom = '$prenom', nom = '$nom', password = '$password' WHERE login = '$login' ");
+            $requete = ("UPDATE `utilisateurs` SET login = '$login', prenom = '$prenom', nom = '$nom', password = '$password' WHERE login = '$loginverify' ");
             $query = mysqli_query($connexion, $requete);
         }
     }

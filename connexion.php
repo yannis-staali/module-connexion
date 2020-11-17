@@ -19,7 +19,7 @@ if(isset($_POST['submit']))
      if($resultat2[0]=='admin' && $resultat2[1]=='admin')
      {
         session_start();
-         $_SESSION['admin'] = $login; 
+         $_SESSION['admin'] = 'admin'; 
          header('location: admin.php');
          exit();
         // echo 'GG';
@@ -29,7 +29,7 @@ if(isset($_POST['submit']))
       if($resultat==1) 
           {
               session_start();
-              $_SESSION['connexion'] = $login ;
+              $_SESSION['connexion'] =  $login ;
               header('location: profil.php');
               exit();
           }
