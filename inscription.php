@@ -1,7 +1,7 @@
 <?php
-
+// $erreur=null;
 if(isset($_POST['submit']))
-{
+{   
     $login = $_POST['login'];
     $prenom = $_POST['prenom'];
     $nom = $_POST['nom'];
@@ -9,6 +9,7 @@ if(isset($_POST['submit']))
     $password2 = $_POST['password2'];
     if($login && $prenom && $nom && $password)
     {
+
         if($password==$password2)
         {
             $connexion = mysqli_connect("localhost","root","","moduleconnexion") or die('erreur');
@@ -16,7 +17,7 @@ if(isset($_POST['submit']))
             $reget = ("SELECT * FROM utilisateurs WHERE login='$login' ");
             $regetx = mysqli_query($connexion, $reget);
             $row = mysqli_num_rows($regetx);
-
+            
             if($row==0)
             {
             $requete = ("INSERT INTO utilisateurs (`login`, `prenom`, `nom`, `password`) VALUE ('$login','$prenom','$nom','$password')");
@@ -27,7 +28,7 @@ if(isset($_POST['submit']))
         }
         else echo "<p style='color: white'>" . "les deux mots de passe doivent être identiques". "</p>";
     }
-    else echo "<p style='color: white'>" . "Veuillez renseigner tous les champs". "</p>";
+    else $erreur= 'renseignez tous les champs';
 }
 
 
@@ -72,6 +73,7 @@ if(isset($_POST['submit']))
                     </article>  
                     <article class="button_ins">
                         <button type="submit" value="Submit"  name="submit">Valider</button>
+                        <?php if(isset($erreur)){echo $erreur;}?>
                     </article>
                 </form>
             </section>

@@ -1,33 +1,45 @@
 <?php 
+session_start();
 
-session_start() ;
- 
-
- $bd = mysqli_connect("localhost","root","","moduleconnexion");
-
- $requete = "SELECT * FROM `utilisateurs`";
- $query = mysqli_query($bd,$requete);
- $resultat = mysqli_fetch_all($query);
-
-    foreach ($resultat as $key => $value)
+if(isset($_POST['submit']))  
+{   
+    if(!empty($_POST))
     {
-        if (!empty($_POST))
-        {
-            if ( $_POST['login'] === $value[1] &&  $_POST['password'] === $value[4])
-            {
-                    $_SESSION['connect'] = "connecté";
-                    $_SESSION['login'] = $_POST['login'];
-                    if( $_POST['login'] === "admin")
-                    {
-                        header('location: admin.php');
-                    }
-                    else header('location: profil.php');
-            }
-        }
-    }
     
- 
-mysqli_close($bd);
+    $login = $_POST['login'];
+    $bd = mysqli_connect("localhost","root","","moduleconnexion");
+    $requete = mysqli_query($bd, "SELECT login, password FROM `utilisateurs` WHERE login='$_POST[login]'  && password='$_POST[password]' ");
+
+    $resultat = mysqli_num_rows($requete);
+
+    $resultat2 = mysqli_fetch_row($requete);
+    // var_dump($resultat2);
+    }  
+
+     if($resultat2[0]=='admin' && $resultat2[1]=='admin')
+     {
+        session_start();
+         $_SESSION['admin'] = $login; 
+         header('location: admin.php');
+         exit();
+        // echo 'GG';
+
+        
+     }
+      if($resultat==1) 
+          {
+              session_start();
+              $_SESSION['connexion'] = $login ;
+              header('location: profil.php');
+              exit();
+          }
+      else
+      {
+          header('location: connexion.php');
+      }
+   
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +73,7 @@ mysqli_close($bd);
                     </article>
                 </form>
                     <article class="linkcreate">
-                        <a href="inscription.html">Créer un compte</a>
-                        <a href="motdepasse.html">Mot de passe oublié</a>
+                        <a href="inscription.php">Créer un compte</a>
                     </article>
             </section>
         </main>

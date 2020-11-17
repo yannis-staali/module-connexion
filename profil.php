@@ -1,7 +1,30 @@
 <?php 
+session_start();
 
+if(!isset($_SESSION['connexion']))
+{
+    header('location: connexion.php');
+    exit();
+}
 
+if(isset($_POST['submit']))
+{
+    if(!empty($_POST))
+    {   
+        $login= $_POST['login'];
+        $prenom= $_POST['prenom'];
+        $nom= $_POST['nom'];
+        $password = $_POST['password'];
+        $password2= $_POST['password2'];
 
+        if($password==$password2)
+        {
+            $connexion = mysqli_connect("localhost","root","","moduleconnexion") or die('erreur');
+            $requete = ("UPDATE `utilisateurs` SET login = '$login', prenom = '$prenom', nom = '$nom', password = '$password' WHERE login = '$login' ");
+            $query = mysqli_query($connexion, $requete);
+        }
+    }
+}
 
 ?>
 
@@ -21,7 +44,7 @@
 
         <main class="main_ins">
             <section class="boite_ins">
-                <form class="form_ins" action="inscription.php" method="post">
+                <form class="form_ins" action="profil.php" method="post">
                 <h1 class="head_profile">Modifiez vos informations</h2>
                     <article class="pseudo_ins">
                         <label for="login">Votre pseudo :</label>
@@ -38,10 +61,15 @@
                     <article class="mp_ins">
                         <label for="enterMp">Votre mot de passe (au moins 8 caractères) : </label>
                         <input pattern=".{8,}" type="password" id="enterMp" name="password" required>
-                    </article>    
+                    </article>
+                    <article class="mp_ins">
+                        <label for="confirmMp">Confirmez votre mot de passe :</label>
+                        <input pattern=".{8,}" type="password" id="confirmMp" name="password2" >
+                    </article>      
                     <article class="button_ins">
                         <button type="submit" name="submit">Valider</button>
                     </article>
+                    <a href="deconnexion.php">Deconnexion</a>
                 </form>
             </section>
         </main>

@@ -1,10 +1,17 @@
+<?php
+session_start();
+session_destroy();
+header('location: index.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="module.css" />
-        <title>Accueil</title>
+        <title>Deconnexion</title>
     </head>
 
     <body class="bodyinscription">
@@ -15,10 +22,8 @@
 
         <main class="main_ins">
             <section class="boite_ins">
-                    <h1 class="head_index">Bienvenue sur FlashSpace™</h1>
+                    <h1 class="head_index">Deconnexion</h1>
                     <article class="linkcreate">
-                        <a href="inscription.php">Créer un compte</a>
-                        <a href="connexion.php">Connexion</a>
                     </article>
             </section>
         </main>

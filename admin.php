@@ -1,3 +1,13 @@
+<?php
+ session_start();
+
+ if(!isset($_SESSION['admin']))
+ {
+     header('location: connexion.php');
+     exit();
+ }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,6 +25,7 @@
         <main class="main_ins">
             <section class="boite_ins">
                 <h1 class="head_admin">Toutes les infos de la base de donnée</h2>
+                <a href="deconnexion.php">Deconnexion</a>
             </section>
         </main>
 
