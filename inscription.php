@@ -1,5 +1,5 @@
 <?php
-// $erreur=null;
+
 if(isset($_POST['submit']))
 {   
     $login = $_POST['login'];
@@ -12,19 +12,21 @@ if(isset($_POST['submit']))
 
         if($password==$password2)
         {
-            $connexion = mysqli_connect("localhost","root","","moduleconnexion") or die('erreur');
+            //hachage du password
+            $password3 = password_hash($password, PASSWORD_BCRYPT, array('cost' =>10 ));
 
+            $connexion = mysqli_connect("localhost","root","","moduleconnexion") or die('erreur');
             $reget = ("SELECT * FROM utilisateurs WHERE login='$login' ");
             $regetx = mysqli_query($connexion, $reget);
             $row = mysqli_num_rows($regetx);
-            
+           
             if($row==0)
             {
-            $requete = ("INSERT INTO utilisateurs (`login`, `prenom`, `nom`, `password`) VALUE ('$login','$prenom','$nom','$password')");
+            $requete = ("INSERT INTO utilisateurs (`login`, `prenom`, `nom`, `password`) VALUE ('$login','$prenom','$nom','$password3')");
             $query = mysqli_query($connexion, $requete);
             header('location: connexion.php');
             }
-            else echo "<p style='color: white'>" . "Ce pseudo n'est pas disponible". "</p>";
+            else echo "<p style='color: white'>" . "Ce pseudo existe deja". "</p>";
         }
         else echo "<p style='color: white'>" . "les deux mots de passe doivent être identiques". "</p>";
     }
@@ -64,15 +66,16 @@ if(isset($_POST['submit']))
                         <input type="text" id="enterLastName" name="nom" >
                     </article>
                     <article class="mp_ins">
-                        <label for="enterMp">Votre mot de passe (au moins 8 caractères) : </label>
-                        <input pattern=".{8,}" type="password" id="enterMp" name="password" >
+                        <label for="enterMp">Mot de passe : </label>
+                        <input type="password" id="enterMp" name="password" >
                     </article>    
                     <article class="mp_ins">
                         <label for="confirmMp">Confirmez votre mot de passe :</label>
-                        <input pattern=".{8,}" type="password" id="confirmMp" name="password2" >
+                        <input type="password" id="confirmMp" name="password2" >
                     </article>  
                     <article class="button_ins">
-                        <button type="submit" value="Submit"  name="submit">Valider</button>
+                        <button type="submit" value="Submit"  name="submit">Valider</button><br/>
+                        <a href="index.php">Retour accueil</a>
                         <?php if(isset($erreur)){echo $erreur;}?>
                     </article>
                 </form>

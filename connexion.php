@@ -5,39 +5,41 @@ if(isset($_POST['submit']))
 {   
     if(!empty($_POST))
     {
-    
     $login = $_POST['login'];
+    $password= $_POST['password'];    
     $bd = mysqli_connect("localhost","root","","moduleconnexion");
-    $requete = mysqli_query($bd, "SELECT login, password FROM `utilisateurs` WHERE login='$_POST[login]'  && password='$_POST[password]' ");
-
+    $requete = mysqli_query($bd, "SELECT login, password FROM `utilisateurs` WHERE login='$login' ");
+    
+    //on va utiliser num_rows pour verifier que l'utilisateur existe
     $resultat = mysqli_num_rows($requete);
-
+    
+    //on fait un fetch row pour recup la ligne
     $resultat2 = mysqli_fetch_row($requete);
-    // var_dump($resultat2);
+    
+    //Decryptage du password 
+    $verify = password_verify($password, $resultat2[1]);
     }  
+    
+    //si verify existe
+    if($verify==true)
+    {
+        if($resultat2[0]=='admin') //on verifie seulement le login puisque le password à deja été verifié
+        {
+            // session_start();
+            $_SESSION['admin'] = 'admin'; 
+            header('location: admin.php');
+            exit();
+        }
 
-     if($resultat2[0]=='admin' && $resultat2[1]=='admin')
-     {
-        session_start();
-         $_SESSION['admin'] = 'admin'; 
-         header('location: admin.php');
-         exit();
-        // echo 'GG';
-
+        if($resultat==1);
+        {
+            // session_start();
+            $_SESSION['connexion'] =  $login ;
+            header('location: profil.php');
+            exit();
+        }
         
-     }
-      if($resultat==1) 
-          {
-              session_start();
-              $_SESSION['connexion'] =  $login ;
-              header('location: profil.php');
-              exit();
-          }
-      else
-      {
-          header('location: connexion.php');
-      }
-   
+    }
 }
 
 ?>
@@ -73,7 +75,8 @@ if(isset($_POST['submit']))
                     </article>
                 </form>
                     <article class="linkcreate">
-                        <a href="inscription.php">Créer un compte</a>
+                        <a href="inscription.php">Créer un compte</a><br/>
+                        <a href="index.php">Retour accueil</a>
                     </article>
             </section>
         </main>
