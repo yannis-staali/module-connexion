@@ -75,7 +75,7 @@ if(isset($_POST['submit']))
                     </article>  
                     <article class="button_ins">
                         <button type="submit" value="Submit"  name="submit">Valider</button><br/>
-                        <a href="index.php">Retour accueil</a>
+                        <a style="color:white; text-decoration:none;" class="boutton_nav" href="index.php">Retour accueil</a>
                         <?php if(isset($erreur)){echo $erreur;}?>
                     </article>
                 </form>

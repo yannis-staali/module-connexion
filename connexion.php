@@ -75,8 +75,8 @@ if(isset($_POST['submit']))
                     </article>
                 </form>
                     <article class="linkcreate">
-                        <a href="inscription.php">Créer un compte</a><br/>
-                        <a href="index.php">Retour accueil</a>
+                        <a style="color:white; text-decoration:none;" class="boutton_nav" href="inscription.php">Créer un compte</a><br/>
+                        <a style="color:white; text-decoration:none;" class="boutton_nav" href="index.php">Retour accueil</a>
                     </article>
             </section>
         </main>

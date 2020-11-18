@@ -97,7 +97,7 @@ if(isset($_POST['submit']))
                     <article class="button_ins">
                         <button type="submit" name="submit">Valider</button>
                     </article>
-                    <a href="deconnexion.php">Deconnexion</a>
+                    <a style="color:white; text-decoration:none;" href="deconnexion.php">Deconnexion</a>
                 </form>
             </section>
         </main>

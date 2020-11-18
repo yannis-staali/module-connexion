@@ -17,8 +17,8 @@
             <section class="boite_ins">
                     <h1 class="head_index">Bienvenue sur FlashSpace™</h1>
                     <article class="linkcreate">
-                        <a href="inscription.php">Créer un compte</a>
-                        <a href="connexion.php">Connexion</a>
+                        <a style="color:white; text-decoration:none;" href="inscription.php">Créer un compte</a>
+                        <a style="color:white; text-decoration:none;" href="connexion.php">Connexion</a>
                     </article>
             </section>
         </main>

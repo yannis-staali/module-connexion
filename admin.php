@@ -1,11 +1,11 @@
 <?php
 session_start();
 
- if(!isset($_SESSION['admin']))
- {
-     header('location: connexion.php');
-     exit();
- }
+if(!isset($_SESSION['admin']))
+{
+    header('location: connexion.php');
+    exit();
+}
 
 else $connexion = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
     $requete = 'SELECT * FROM utilisateurs';
@@ -30,11 +30,11 @@ else $connexion = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
             <h1>Page Admin</h1>
         </header>
 
-        <main class="main_ins">
-            <section class="boite_ins">
+        <main class="admin_page">
+            <section class="boite_admin">
                 <h1 class="head_admin">Toutes les infos de la base de donnée</h2>
                 <?php 
-                echo "<table class='liste'>";
+                echo "<table style=width='300px;' class='liste'>";
                 echo '<tr>';
                 foreach ($champs as $champ ) 
                 {
@@ -53,7 +53,7 @@ else $connexion = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
                 }
                 echo '</table>';
                 ?>
-                <a href="deconnexion.php">Deconnexion</a>
+                <a style="color:white; text-decoration:none;" href="deconnexion.php">Deconnexion</a>
             </section>
         </main>
 
